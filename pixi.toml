@@ -1,0 +1,23 @@
+[workspace]
+name = "bluesky-tiled-suspender"
+version = "0.1.0"
+description = "Ophyd signal and bluesky suspender for Tiled server health status"
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-arm64", "osx-64", "win-64"]
+
+[dependencies]
+python = ">=3.10"
+ophyd = "*"
+bluesky = "*"
+requests = "*"
+ipython = ">=9.12.0,<10"
+
+[feature.dev.dependencies]
+pytest = "*"
+
+[feature.dev.tasks]
+test = "pytest test_tiled_suspender.py -v"
+test-network = "pytest test_tiled_suspender.py -v -m network"
+
+[environments]
+dev = ["dev"]
